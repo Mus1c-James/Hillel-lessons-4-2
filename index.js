@@ -1,22 +1,25 @@
 "use strict";
+//debugger
+let inputNumberDigit = prompt("Введите трехзначное число");
 
- const fiveDigitNumberInput = prompt('Enter 5 digit number');
- let result =''; 
- if(fiveDigitNumberInput === null){
-    alert()
- }else if (fiveDigitNumberInput.trim() === '' || isNaN(fiveDigitNumberInput) || !Number.isInteger(+fiveDigitNumberInput)){
-    alert('Error: invalid number') 
- }else{
-   const num = Math.abs(+fiveDigitNumberInput);
- 
-    if(String(num).length === 5 ){
-      result = num.toString().split('').join(' ');
-      alert(`Your number is: ${result}`);
-    }else{
-        alert('Number is not 5-digit');
+	//console.log(inputNumberDigit);
+inputNumberDigit = inputNumberDigit.trim();
+	//console.log('input Trim', inputNumberDigit);
+if (/^-?\d{3}$/.test(inputNumberDigit)) {
+    let numStr = inputNumberDigit.replace('-', ''); 
+    let numberDigit1 = numStr[0];
+    let numberDigit2 = numStr[1];
+    let numberDigit3 = numStr[2]; 
+
+    if (numberDigit1 === numberDigit2 && numberDigit2 === numberDigit3) {
+        console.log("Все цифры одинаковы");
+    }  
+    else if (numberDigit1 === numberDigit2 || numberDigit2 === numberDigit3 || numberDigit1 === numberDigit3) {
+        console.log("Есть одинаковые цифры среди цифр числа");
+    } 
+    else {
+        console.log("Все цифры разные");
     }
- }
- document.getElementById("content").innerHTML = `
- <p>Your number is: ${result}</p>
- `; 
- 
+} else {
+    console.log("Ошибка: введено не трехзначное число");
+}
